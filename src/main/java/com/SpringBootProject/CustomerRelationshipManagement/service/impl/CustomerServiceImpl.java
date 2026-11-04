@@ -1,5 +1,6 @@
 package com.SpringBootProject.CustomerRelationshipManagement.service.impl;
 
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.SpringBootProject.CustomerRelationshipManagement.entity.Customer;
@@ -18,5 +19,10 @@ public class CustomerServiceImpl implements CustomerService {
     public String insertCustomer(Customer customer) {
         customerRepository.save(customer);
         return "Customer inserted successfully";
+    }
+
+    @Override
+    public List<Customer> getAllCustomers() {
+        return customerRepository.findAll();
     }
 }
