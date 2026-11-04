@@ -31,3 +31,23 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Sensitive config — never commit real credentials ###
+src/main/resources/application.properties
+src/main/resources/application-local.properties
+src/main/resources/application-dev.properties
+src/main/resources/application-prod.properties
+.env
+
+### Logs ###
+*.log
+logs/
+spring-shell.log
+
+### OS generated ###
+.DS_Store
+Thumbs.db
+
+### Postman workspace (personal, not team-shared) ###
+.postman/
+postman/
