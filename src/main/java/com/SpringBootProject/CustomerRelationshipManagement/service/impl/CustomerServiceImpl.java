@@ -16,14 +16,19 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public String insertCustomer(Customer customer) {
-        customerRepository.save(customer);
-        return "Customer inserted successfully";
+    public List<Customer> insertCustomer(List<Customer> customers) {
+        return customerRepository.saveAll(customers);
     }
 
     @Override
     public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
+    }
+
+    @Override
+    public Customer getCustomerById(Long id) {
+        return customerRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Customer not found with id: " + id));
     }
 
     @Override

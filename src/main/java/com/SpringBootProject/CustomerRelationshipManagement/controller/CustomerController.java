@@ -25,8 +25,8 @@ public class CustomerController {
     }
 
     @PostMapping("/insert")
-    public String insertCustomer(@RequestBody Customer customer) {
-        return customerService.insertCustomer(customer);
+    public List<Customer> insertCustomer(@RequestBody List<Customer> customers) {
+        return customerService.insertCustomer(customers);
     }
 
     @GetMapping
@@ -37,6 +37,11 @@ public class CustomerController {
     @PutMapping("/{id}")
     public Customer updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {
         return customerService.updateCustomer(id, customer);
+    }
+
+    @GetMapping("/{id}")
+    public Customer getCustomerById(@PathVariable Long id) {
+        return customerService.getCustomerById(id);
     }
 
     @DeleteMapping("/{id}")
