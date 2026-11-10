@@ -6,29 +6,40 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "customers")
 public class Customer {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column (name = "first_name", nullable = false)
+    @NotBlank(message = "First name cannot be empty")
+    @Size(min = 2, max = 50, message = "First name must be between 2 and 50 characters")
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @Column (name = "last_name", nullable = false)
+    @NotBlank(message = "Last name cannot be empty")
+    @Size(min = 2, max = 50, message = "Last name must be between 2 and 50 characters")
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column (name = "email", nullable = false)
+    @NotBlank(message = "Email cannot be empty")
+    @Email(message = "Please provide a valid email address")
+    @Column(name = "email", nullable = false)
     private String email;
 
-    @Column (name = "mobile_number", nullable = false)
+    @NotBlank(message = "Mobile number cannot be empty")
+    @Pattern(regexp = "^[0-9]{10}$", message = "Mobile number must contain exactly 10 digits")
+    @Column(name = "mobile_number", nullable = false)
     private String mobileNumber;
 
-    @Column (name = "age", nullable = false)
+    @Min(value = 18, message = "Customer must be at least 18 years old")
+    @Max(value = 100, message = "Age cannot exceed 100")
+    @Column(name = "age", nullable = false)
     private int age;
+
 
     public Long getId() {
         return id;

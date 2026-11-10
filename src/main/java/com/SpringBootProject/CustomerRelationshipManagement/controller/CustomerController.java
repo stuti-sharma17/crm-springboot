@@ -1,7 +1,7 @@
 package com.SpringBootProject.CustomerRelationshipManagement.controller;
 
 
-
+import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +25,7 @@ public class CustomerController {
     }
 
     @PostMapping("/insert")
-    public List<Customer> insertCustomer(@RequestBody List<Customer> customers) {
+    public List<Customer> insertCustomer(@Valid @RequestBody List<Customer> customers) {
         return customerService.insertCustomer(customers);
     }
 
@@ -35,7 +35,7 @@ public class CustomerController {
     }
 
     @PutMapping("/{id}")
-    public Customer updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {
+    public Customer updateCustomer(@PathVariable Long id, @Valid @RequestBody Customer customer) {
         return customerService.updateCustomer(id, customer);
     }
 
